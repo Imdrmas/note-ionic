@@ -1,0 +1,25 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header style="margin-left: 15px;">Categories</ion-list-header>
+          <ion-note> <ion-chip color="danger" (click)="addCategory()"><ion-label>Add category</ion-label><ion-icon name="add-circle-outline"></ion-icon></ion-chip>
+          </ion-note>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let cat of categories">
+            <ion-item  button [routerLink]="['/folder/', cat.id]" routerLinkActive="router-link-active" >
+              <ion-icon slot="start" name="caret-forward-outline"></ion-icon>
+              <ion-label>{{cat.name}}</ion-label>
+            </ion-item>
+          </ion-menu-toggle><br>
+          <ion-label style="margin-left: 15px;" [routerLink]="['/folder/note']">
+            <ion-icon name="home-sharp"></ion-icon> <span style="margin-left: 32px; color: blue; cursor: pointer">Home</span>
+          </ion-label>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
+

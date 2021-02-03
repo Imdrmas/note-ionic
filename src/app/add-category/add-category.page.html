@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Back</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-spinner name="bubbles" color="primary" class="center" *ngIf="progressBar"></ion-spinner>
+    <ion-card-header>
+      <ion-card-subtitle>Add category</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <form name="client" (ngSubmit)="addCategory()" #formRegister="ngForm" novalidate>
+
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" placeholder="Enter name" name="name" [(ngModel)]="category.name" #name="ngModel"
+            required></ion-input>
+        </ion-item>
+
+        <br>
+        <ion-button type="submit" color="success" fill="solid" size="large" expand="block" [disabled]="name.invalid">
+          Save</ion-button>
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
